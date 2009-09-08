@@ -1,0 +1,18 @@
+--- rubyrrdtool.c.orig	2009-09-09 00:35:42.466628697 +0200
++++ rubyrrdtool.c	2009-09-09 00:38:34.760881115 +0200
+@@ -22,7 +22,6 @@
+ #include <math.h>   /* for isnan */
+ #include <ruby.h>
+ #include <rrd.h>
+-#include "rrd_addition.h"
+ 
+ /* printf debugging */
+ #define  R_RRD_DEBUG_OFF 0  /* no debugging   */
+@@ -994,7 +993,7 @@
+ {
+     VALUE   rrd;        /* rrd database filename */
+     VALUE   rval;       /* our result */
+-    info_t *data, *p;   /* this is what rrd_info()returns */
++    rrd_info_t *data, *p;   /* this is what rrd_info()returns */
+ 
+     reset_rrd_state();
