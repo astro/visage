@@ -148,7 +148,8 @@ var visageGraph = new Class({
                             shade: false, 
                             width: 1.5,
                             axis: "0 0 1 1", 
-                            colors: this.colors, 
+                            xaxislabels: this.formatAxisDate,
+                            colors: this.colors,
                             axisxstep: x.length / 20
         });
 
@@ -160,6 +161,15 @@ var visageGraph = new Class({
         this.buildLabels(this.graphLines, this.pluginInstanceNames, this.pluginInstanceDataSources, this.colors);
         this.buildDateSelector();
 
+    },
+    formatAxisDate: function(pos, interval) {
+        var date = new Date(pos);
+        if (interval < 60)
+            return date.toLocaleFormat("%H:%M:%S");
+        else if(interval < 24 * 60 * 60)
+            return date.toLocaleFormat("%H:%M");
+        else
+            return date.toLocaleFormat("%y-%m-%d");
     },
     addSelectionInterface: function() {
         var graph = this.graph;
